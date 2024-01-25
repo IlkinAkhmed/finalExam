@@ -35,7 +35,7 @@ function Services() {
           </p>
         </div>
         <div className="ser-card">
-          <i class="fa-solid fa-burger"></i>
+          <i className="fa-solid fa-burger"></i>
           <h3>Brunch</h3>
           <p>
             In vitae nisi aliquam, scelerisque leo a, volutpat sem. Vivamus
