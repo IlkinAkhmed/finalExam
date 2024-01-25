@@ -1,0 +1,55 @@
+.mySwiper {
+  width: 100%;
+  height: 100vh;
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    color: white;
+  }
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    color: white;
+  }
+  .slide {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    .main-texts {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      h1 {
+        color: white;
+        font-size: 7em;
+      }
+      p {
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+  .one {
+    background-image: url("https://preview.colorlib.com/theme/pulse/img/slider/slider-2.jpg");
+  }
+  .two {
+    background-image: url("https://preview.colorlib.com/theme/pulse/img/slider/slider-1.jpg");
+  }
+  .three {
+    background-image: url("https://preview.colorlib.com/theme/pulse/img/slider/slider-3.jpg");
+  }
+}
+
+@media screen and (max-width: 577px) {
+  .mySwiper {
+    .slide {
+      .main-texts {
+        width: 90%;
+        h1 {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+}

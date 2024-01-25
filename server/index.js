@@ -10,6 +10,7 @@ const { Schema } = mongoose;
 const productSchema = new Schema({
   title: { type: String },
   description: { type: String },
+  category: { type: String },
   price: { type: Number },
 });
 const Products = model("FinalExam", productSchema);
