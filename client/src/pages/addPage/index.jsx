@@ -166,7 +166,7 @@ function AddPage() {
                   }
                 })
                 .map((item) => (
-                  <tr>
+                  <tr key={item._id}>
                     <td>{item._id}</td>
                     <td>{item.title}</td>
                     <td>${item.price}.00</td>

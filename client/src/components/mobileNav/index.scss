@@ -31,3 +31,10 @@
 .nav-active{
     height: 300px !important;
 }
+
+@media screen and (min-width: 577px) {
+    .mob-nav{
+        display: none;
+    }
+}
+ 

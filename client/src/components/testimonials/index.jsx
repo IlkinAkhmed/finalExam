@@ -10,7 +10,7 @@ function Testimonials() {
   return (
     <div className="test">
       <div className="test-head">
-        <i class="fa-solid fa-mug-hot"></i>
+        <i className="fa-solid fa-mug-hot"></i>
         <h2>Testimonials</h2>
       </div>
       <Swiper

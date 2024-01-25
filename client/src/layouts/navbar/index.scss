@@ -6,7 +6,7 @@ nav {
   background-color: transparent;
   border-bottom: 1px solid gray;
   z-index: 5;
-  background-color: rgb(0, 0, 0,0.7);
+  background-color: rgb(0, 0, 0, 0.7);
   .nav-inner {
     width: 100%;
     display: flex;
@@ -52,22 +52,18 @@ nav {
         font-weight: bold;
       }
     }
-    .fa-bars,.fa-xmark {
+    .fa-bars,
+    .fa-xmark {
       font-size: 1.2em;
       color: white;
-    }
-    .fa-bars{
-        display: none;
+      display: none;
     }
   }
 }
 
-
 .scroll {
   background-color: rgb(0, 0, 0, 0.7);
 }
-
-
 
 @media screen and (max-width: 577px) {
   nav {
@@ -83,7 +79,8 @@ nav {
       .call {
         display: none;
       }
-      .fa-bars {
+      .fa-bars,
+      .fa-xmark {
         display: block;
       }
     }
