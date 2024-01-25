@@ -9,6 +9,7 @@ function Menu() {
   const navigate = useNavigate();
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [category, setCategory] = useState("all");
 
   const { addToWish, wishlist } = useContext(WishlistContext);
   const { addToCart, basket } = useContext(BasketContext);
@@ -28,46 +29,49 @@ function Menu() {
         <h2>Our Menu</h2>
       </div>
       <div className="menu-categ">
-        <p>Breakfast</p>
-        <p>Brunch</p>
-        <p>Lunch</p>
-        <p>Dinner</p>
+        <p onClick={() => setCategory("breakfast")}>Breakfast</p>
+        <p onClick={() => setCategory("brunch")}>Brunch</p>
+        <p onClick={() => setCategory("lunch")}>Lunch</p>
+        <p onClick={() => setCategory("dinner")}>Dinner</p>
+        <p onClick={() => setCategory("all")}>All</p>
       </div>
       <div className="menu-wrapper">
         {isLoading ? (
           <h1>Loading...</h1>
         ) : (
           products &&
-          products.map((item) => (
-            <div className="menu-card" key={item._id}>
-              <div className="title">
-                <h3>{item.title}</h3>
-                <div className="icons">
-                  <i
-                    onClick={() => navigate(`/details/${item._id}`)}
-                    className="fa-solid fa-eye"
-                  ></i>
-                  <i
-                    onClick={() => addToCart(item)}
-                    className="fa-solid fa-basket-shopping"
-                  ></i>
-                  <i
-                    onClick={() => addToWish(item)}
-                    className={`${
-                      wishlist.find((x) => x._id === item._id)
-                        ? "fa-solid"
-                        : "fa-regular"
-                    } fa-heart`}
-                  ></i>
+          products
+            .filter((item) => item.category === category || category === "all")
+            .map((item) => (
+              <div className="menu-card" key={item._id}>
+                <div className="title">
+                  <h3>{item.title}</h3>
+                  <div className="icons">
+                    <i
+                      onClick={() => navigate(`/details/${item._id}`)}
+                      className="fa-solid fa-eye"
+                    ></i>
+                    <i
+                      onClick={() => addToCart(item)}
+                      className="fa-solid fa-basket-shopping"
+                    ></i>
+                    <i
+                      onClick={() => addToWish(item)}
+                      className={`${
+                        wishlist.find((x) => x._id === item._id)
+                          ? "fa-solid"
+                          : "fa-regular"
+                      } fa-heart`}
+                    ></i>
+                  </div>
+                </div>
+                <div className="price">
+                  <p>{item.description}</p>
+                  <span></span>
+                  <p>${item.price}.00</p>
                 </div>
               </div>
-              <div className="price">
-                <p>{item.description}</p>
-                <span></span>
-                <p>${item.price}.00</p>
-              </div>
-            </div>
-          ))
+            ))
         )}
       </div>
     </div>

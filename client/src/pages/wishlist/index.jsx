@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import "./index.scss";
 import { WishlistContext } from "../../context/wishlist";
+import { BasketContext } from "../../context/basket";
 
 function Wihslist() {
   const { wishlist, removeFromWish } = useContext(WishlistContext);
+  const { addToCart } = useContext(BasketContext);
 
   return (
     <>
@@ -27,8 +29,10 @@ function Wihslist() {
                 <div className="title">
                   <h3>{item.title}</h3>
                   <div className="icons">
-                    <i className="fa-solid fa-eye"></i>
-                    <i className="fa-solid fa-basket-shopping"></i>
+                    <i
+                      onClick={() => addToCart(item)}
+                      className="fa-solid fa-basket-shopping"
+                    ></i>
                     <i
                       className="fa-solid fa-trash-can"
                       onClick={() => removeFromWish(item)}

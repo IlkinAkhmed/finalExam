@@ -6,18 +6,6 @@ import MobileNav from "../../components/mobileNav";
 function Navbar() {
   const [isNavActive, setIsNavActive] = useState(false);
 
-  const [scroll, setScroll] = useState(false);
-
-  if (window.scrollY > 120) {
-    setScroll(true);
-  } else {
-    setScroll(false);
-  }
-
-  useEffect(()=>{
-
-  },[])
-
   return (
     <nav>
       <div className="nav-inner">

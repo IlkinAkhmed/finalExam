@@ -4,11 +4,13 @@ import "./index.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { WishlistContext } from "../../context/wishlist";
+import { BasketContext } from "../../context/basket";
 
 function Details() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const { addToWish, wishlist } = useContext(WishlistContext);
+  const { addToCart } = useContext(BasketContext);
 
   async function fetchData() {
     const res = await axios.get(`http://localhost:5100/products/${id}`);
@@ -27,7 +29,10 @@ function Details() {
           <div className="title">
             <h3>{product.title}</h3>
             <div className="icons">
-              <i className="fa-solid fa-basket-shopping"></i>
+              <i
+                onClick={() => addToCart(product)}
+                className="fa-solid fa-basket-shopping"
+              ></i>
               <i
                 onClick={() => addToWish(product)}
                 className={`${

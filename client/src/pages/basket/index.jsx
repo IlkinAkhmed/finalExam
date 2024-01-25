@@ -2,10 +2,14 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { BasketContext } from "../../context/basket";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
+import { WishlistContext } from "../../context/wishlist";
 
 function Basket() {
   const { basket, removeFromCart, modifyCount } = useContext(BasketContext);
+  const { addToWish,wishlist } = useContext(WishlistContext);
   const subtotal = basket.reduce((int, prod) => int + parseInt(prod.total), 0);
+  const navigate = useNavigate();
   return (
     <>
       <Helmet>
@@ -26,8 +30,14 @@ function Basket() {
                 <div className="title">
                   <h3>{item.title}</h3>
                   <div className="icons">
-                    <i className="fa-solid fa-eye"></i>
-                    <i className="fa-solid fa-basket-shopping"></i>
+                    <i
+                      onClick={() => addToWish(item)}
+                      className={`${
+                        wishlist.find((x) => x._id === item._id)
+                          ? "fa-solid"
+                          : "fa-regular"
+                      } fa-heart`}
+                    ></i>
                     <i
                       className="fa-solid fa-trash-can"
                       onClick={() => removeFromCart(item)}
